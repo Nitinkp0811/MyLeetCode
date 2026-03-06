@@ -5,22 +5,22 @@ public:
         int start = 0;
         int end = n - 1;
 
-        if(n == 0) {
+        if(n == 1) {
             return nums[0];
         }
 
-        while(start < end) {
+        while(start <= end) {
             int mid = start + (end - start) / 2;
 
-            if((mid == 0) && (nums[mid] != nums[mid + 1])) {
+            if(mid == 0 && nums[mid] != nums[mid + 1]) {
                 return nums[mid];
             }
 
-            if((mid == n - 1) && (nums[mid - 1] != nums[mid - 2])) {
+            if(mid == n - 1 && nums[mid - 1] != nums[mid - 2]) {
                 return nums[mid];
             }
 
-            if((nums[mid] != nums[mid - 1]) && (nums[mid] != nums[mid + 1])) {
+            if(nums[mid] != nums[mid - 1] && nums[mid] != nums[mid + 1]) {
                 return nums[mid];
             }
 
@@ -42,6 +42,6 @@ public:
                 }
             }
         }
-        return nums[start];
+        return -1;
     }
 };
