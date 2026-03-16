@@ -1,16 +1,14 @@
 class Solution {
 public:
     int diagonalSum(vector<vector<int>>& mat) {
+        int n = mat.size();
         int diagonalSum = 0;
 
-        for(int i = 0; i < mat.size(); i++) {
-            for(int j = 0; j < mat.size(); j++) {
-                if(i == j) {
-                    diagonalSum += mat[i][j];
-                } 
-                else if(j == mat.size() - 1 - i) {
-                    diagonalSum += mat[i][j];
-                }
+        for(int i = 0; i < n; i++) {
+            diagonalSum += mat[i][i];
+
+            if(i != n - 1 - i) {
+                diagonalSum += mat[i][n - 1 - i];
             }
         }
 
