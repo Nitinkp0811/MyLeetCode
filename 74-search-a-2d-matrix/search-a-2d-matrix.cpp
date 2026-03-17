@@ -33,7 +33,7 @@ public:
             if(target >= matrix[midRow][0] && target <= matrix[midRow][n - 1]) {
                 return searchInColumn(matrix, target, midRow);
             }
-            else if(target >= matrix[midRow][n - 1]) {
+            else if(target > matrix[midRow][n - 1]) {
                 startRow = midRow + 1;
             } else {
                 endRow = midRow - 1;
