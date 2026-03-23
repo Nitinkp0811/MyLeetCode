@@ -1,24 +1,26 @@
 class Solution {
 public:
     vector<int> findErrorNums(vector<int>& nums) {
-        int n = nums.size();
-        int numsSum = 0;
-        int duplicateNum = -1;
-        int sum;
-        int missingNum;
+        int duplicate = -1;
+        int missing = -1;
 
-        sort(nums.begin(), nums.end());
+        for(int i = 0; i < nums.size(); i++) {
+            int index = abs(nums[i]) - 1;
 
-        for(int i = 0; i < n; i++) {
-            numsSum += nums[i];
-
-            if(i > 0 && nums[i] == nums[i - 1]) {
-                duplicateNum = nums[i];
+            if(nums[index] < 0) {
+                duplicate = abs(nums[i]);
+            } else {
+                nums[index] = -nums[index];
             }
         }
-        sum = (n * (n + 1)) / 2;
 
-        missingNum = sum - numsSum + duplicateNum;
-        return {duplicateNum, missingNum};
+        for(int i = 0; i < nums.size(); i++) {
+            if(nums[i] > 0) {
+                missing = i + 1;
+                break;
+            }
+        }
+
+        return{duplicate, missing};
     }
 };
